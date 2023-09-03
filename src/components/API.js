@@ -13,7 +13,7 @@ export const fetchMovieDay = async () => {
       },
       params: { key: API_KEY },
     });
-    return response.data.results;
+    return response.data;
   } catch (error) {
     throw error;
   }
