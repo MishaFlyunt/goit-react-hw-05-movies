@@ -1,4 +1,4 @@
-import { useLocation, Link, useParams } from 'react-router-dom';
+import { useLocation, Link, useParams, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Loader } from '../../components/Loader/Loader';
 import { MovieDetailsList } from '../../components/MovieDetails/MovieDetailsList';
@@ -38,6 +38,17 @@ export const MovieDetails = () => {
       <Link to={backLinkHref}>Back to products</Link>
       <MovieDetailsList movDetails={movie} genres={genres} />
       {loading && <Loader />}
+      <div>
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+      </div>
+      <Outlet />
     </main>
   );
 };

@@ -32,11 +32,28 @@ export const fetchMovieId = async id => {
       },
       params: {
         key: API_KEY,
-        // page: page,
       },
     });
     return response.data;
   } catch (error) {
-    console.log(error);
+    throw error;
+  }
+};
+
+export const fetchMovieIdCast = async id => {
+  try {
+    const response = await axios.get(`/movie/${id}/credits?language=en-US`, {
+      headers: {
+        accept: 'application/json',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZDBhYmVjMzk3NThmYWNjZGEzZjQzYmExODA1MzM5ZCIsInN1YiI6IjY0ZjFiM2NiNzdkMjNiMDE1MDM5NmMzZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WplJPNk-aJnVXOPn70UQZXY7FFOVyJ_3vwxBYgU4rJs',
+      },
+      params: {
+        key: API_KEY,
+      },
+    });
+    return response.data;
+  } catch (error) {
+     throw error;
   }
 };
