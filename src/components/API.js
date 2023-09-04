@@ -24,7 +24,7 @@ export const fetchMovieDay = async page => {
 
 export const fetchMovieId = async id => {
   try {
-    const response = await axios.get(`/movie/${id}?language=en-US`, {
+    const response = await axios.get(`/movie/${id}`, {
       headers: {
         accept: 'application/json',
         Authorization:
@@ -32,6 +32,7 @@ export const fetchMovieId = async id => {
       },
       params: {
         key: API_KEY,
+        language: 'en-US',
       },
     });
     return response.data;
@@ -42,7 +43,7 @@ export const fetchMovieId = async id => {
 
 export const fetchMovieIdCast = async id => {
   try {
-    const response = await axios.get(`/movie/${id}/credits?language=en-US`, {
+    const response = await axios.get(`/movie/${id}/credits`, {
       headers: {
         accept: 'application/json',
         Authorization:
@@ -50,6 +51,7 @@ export const fetchMovieIdCast = async id => {
       },
       params: {
         key: API_KEY,
+        language: 'en-US',
       },
     });
     return response.data;
@@ -60,7 +62,7 @@ export const fetchMovieIdCast = async id => {
 
 export const fetchMovieIdRevies = async id => {
   try {
-    const response = await axios.get(`/movie/${id}/reviews?language=en-US`, {
+    const response = await axios.get(`/movie/${id}/reviews`, {
       headers: {
         accept: 'application/json',
         Authorization:
@@ -68,6 +70,29 @@ export const fetchMovieIdRevies = async id => {
       },
       params: {
         key: API_KEY,
+        language: 'en-US',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const fetchMovieSearch = async (guery, page) => {
+  try {
+    const response = await axios.get(`/search/movie`, {
+      headers: {
+        accept: 'application/json',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZDBhYmVjMzk3NThmYWNjZGEzZjQzYmExODA1MzM5ZCIsInN1YiI6IjY0ZjFiM2NiNzdkMjNiMDE1MDM5NmMzZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WplJPNk-aJnVXOPn70UQZXY7FFOVyJ_3vwxBYgU4rJs',
+      },
+      params: {
+        key: API_KEY,
+        query: guery,
+        include_adult: 'false',
+        language: 'en-US',
+        page: page,
       },
     });
     return response.data;
