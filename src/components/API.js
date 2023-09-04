@@ -54,6 +54,24 @@ export const fetchMovieIdCast = async id => {
     });
     return response.data;
   } catch (error) {
-     throw error;
+    throw error;
+  }
+};
+
+export const fetchMovieIdRevies = async id => {
+  try {
+    const response = await axios.get(`/movie/${id}/reviews?language=en-US`, {
+      headers: {
+        accept: 'application/json',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZDBhYmVjMzk3NThmYWNjZGEzZjQzYmExODA1MzM5ZCIsInN1YiI6IjY0ZjFiM2NiNzdkMjNiMDE1MDM5NmMzZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WplJPNk-aJnVXOPn70UQZXY7FFOVyJ_3vwxBYgU4rJs',
+      },
+      params: {
+        key: API_KEY,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
   }
 };
