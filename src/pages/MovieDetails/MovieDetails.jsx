@@ -1,5 +1,6 @@
 import { useLocation, Link, useParams, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { IoArrowBackCircle } from 'react-icons/io5';
 import { Loader } from '../../components/Loader/Loader';
 import { MovieDetailsList } from '../../components/MovieDetails/MovieDetailsList';
 import { fetchMovieId } from '../../components/API';
@@ -35,7 +36,10 @@ export const MovieDetails = () => {
   console.log(movie);
   return (
     <main>
-      <Link to={backLinkHref}>Back to products</Link>
+      <Link to={backLinkHref}>
+        <IoArrowBackCircle size={35} />
+        Back to products
+      </Link>
       <MovieDetailsList movDetails={movie} genres={genres} />
       {loading && <Loader />}
       <div>
