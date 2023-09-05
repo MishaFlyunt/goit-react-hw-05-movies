@@ -8,7 +8,6 @@ export const Home = () => {
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
- 
 
   useEffect(() => {
     const resultMovie = async () => {
@@ -39,7 +38,7 @@ export const Home = () => {
   return (
     <main>
       <ListPopularMovies movie={movie} />
-      <Button loadMore={handleLoadMore} />
+      {movie.length > 0 && !loading && <Button loadMore={handleLoadMore} />}
       {loading && <Loader />}
     </main>
   );

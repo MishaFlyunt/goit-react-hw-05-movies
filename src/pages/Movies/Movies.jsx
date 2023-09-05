@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Loader } from '../../components/Loader/Loader';
-import { MoviesSearch } from '../../components/ MoviesSearch/ MoviesSearch';
-import { ListPopularMovies } from '../../components/ListPopularMovies/ListPopularMovies';
+import { MoviesSearch } from '../../components/MoviesSearch/ MoviesSearch';
+import { MoviesSearchList } from '../../components/MoviesSearchList/MoviesSearchList';
 import { fetchMovieSearch } from '../../components/API';
+import { useParams, Outlet } from 'react-router-dom';
+import { Button } from '../../components/Button/Button';
 
 export const Movies = () => {
   const [query, setQuery] = useState('');
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const { movieId } = useParams();
+  // const location = useLocation();
 
   const changeQuery = newQuery => {
     //  setQuery(`${Date.now()}/${newQuery}`);
@@ -36,7 +40,7 @@ export const Movies = () => {
     const loadResult = async () => {
       try {
         setLoading(true);
-        const movieSearch = await fetchMovieSearch(query, page);
+        const movieSearch = await fetchMovieSearch(query, page, movieId);
         if (movieSearch.length) {
           setMovie(movieSearch);
           setLoading(false);
@@ -51,21 +55,23 @@ export const Movies = () => {
       }
     };
     loadResult();
-  }, [query, page]);
+  }, [query, page, movieId]);
 
-  // const handleLoadMore = () => {
-  //   setPage(page + 1);
-  // };
+  const handleLoadMore = () => {
+    setPage(page + 1);
+  };
 
   console.log(movie);
   return (
     <section>
       <MoviesSearch submit={handleSubmit} />
-      <ListPopularMovies movie={movie} />
+      <MoviesSearchList movie={movie} />
+      {movie.length > 0 && !loading && (
+        <Button loadMore={handleLoadMore} />
+      )}
       {loading && <Loader />}
       <Toaster position="top-right" reverseOrder={false} />
+      <Outlet />
     </section>
   );
 };
-
-// fetchMovieSearch
