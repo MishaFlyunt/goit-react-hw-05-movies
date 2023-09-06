@@ -8,15 +8,14 @@ import { useParams, Outlet } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 
 export const Movies = () => {
-  const [query, setQuery] = useState('');
   const [movie, setMovie] = useState([]);
+  const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
   // const location = useLocation();
 
   const changeQuery = newQuery => {
-    //  setQuery(`${Date.now()}/${newQuery}`);
     setQuery(newQuery);
     setMovie([]);
     setPage(1);
@@ -28,7 +27,9 @@ export const Movies = () => {
       toast.error('Sorry, The search criteria are unknown');
       return;
     }
+
     changeQuery(evt.target.elements.query.value);
+    // setQuery(evt.target.elements.query.value);
     evt.target.reset();
   };
 
@@ -42,7 +43,8 @@ export const Movies = () => {
         setLoading(true);
         const movieSearch = await fetchMovieSearch(query, page, movieId);
         if (movieSearch.length) {
-          setMovie(movieSearch);
+          setMovie(prevState => prevState.concat([...movieSearch]));
+          // setMovie(movieSearch);
           setLoading(false);
         } else {
           toast.error('Sorry, Nothing was found for these criteria');
@@ -66,9 +68,7 @@ export const Movies = () => {
     <section>
       <MoviesSearch submit={handleSubmit} />
       <MoviesSearchList movie={movie} />
-      {movie.length > 0 && !loading && (
-        <Button loadMore={handleLoadMore} />
-      )}
+      {movie.length > 0 && !loading && <Button loadMore={handleLoadMore} />}
       {loading && <Loader />}
       <Toaster position="top-right" reverseOrder={false} />
       <Outlet />

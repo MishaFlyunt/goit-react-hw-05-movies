@@ -16,7 +16,7 @@ export const fetchMovieDay = async page => {
         page: page,
       },
     });
-    return response.data;
+    return response.data.results;
   } catch (error) {
     throw error;
   }

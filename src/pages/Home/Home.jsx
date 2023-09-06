@@ -14,9 +14,9 @@ export const Home = () => {
       try {
         setLoading(true);
         const movieDay = await fetchMovieDay(page);
-        if (movieDay.length !== 0) {
-          // setMovie(prevState => prevState.concat([...movieDay.results]));
-          setMovie([...movieDay.results]);
+        if (movieDay.length) {
+          // setMovie(prevState => prevState.concat(movieDay));
+          setMovie(movieDay);
           setLoading(false);
           console.log(movieDay.page);
         }
@@ -37,9 +37,10 @@ export const Home = () => {
   console.log(movie);
   return (
     <main>
-      <ListPopularMovies movie={movie} />
-      {movie.length > 0 && !loading && <Button loadMore={handleLoadMore} />}
+      <ListPopularMovies loadMore={handleLoadMore} movie={movie} />
       {loading && <Loader />}
+      
+      {movie.length > 0 && !loading && <Button loadMore={handleLoadMore} />}
     </main>
   );
 };

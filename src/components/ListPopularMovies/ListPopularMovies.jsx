@@ -1,21 +1,22 @@
 import { NavLink, useLocation } from 'react-router-dom';
+import { Title, List, TitleCard, Img } from './ListPopularMovies.style';
 
 export const ListPopularMovies = ({ movie }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w300';
   const location = useLocation();
   return (
     <div>
-      <h1>Trending today</h1>
-      <ul>
+      <Title>Trending today</Title>
+      <List>
         {movie.map(item => (
           <li key={item.id}>
             <NavLink to={`${item.id}`} state={{ from: location }}>
-              <img src={imgUrl + item.poster_path} alt="" />
-              <p>{item.original_title}</p>
+              <Img src={imgUrl + item.poster_path} alt={item.original_title} />
+              <TitleCard>{item.original_title}</TitleCard>
             </NavLink>
           </li>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };
