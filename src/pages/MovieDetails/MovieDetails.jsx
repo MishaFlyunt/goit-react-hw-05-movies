@@ -1,9 +1,10 @@
-import { useLocation, Link, useParams, Outlet } from 'react-router-dom';
+import { useLocation, useParams, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { IoArrowBackCircle } from 'react-icons/io5';
 import { Loader } from '../../components/Loader/Loader';
 import { MovieDetailsList } from '../../components/MovieDetails/MovieDetailsList';
 import { fetchMovieId } from '../../components/API';
+import { Header, List, LinkDetalis, LinkBack } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -36,22 +37,22 @@ export const MovieDetails = () => {
   console.log(movie);
   return (
     <main>
-      <Link to={backLinkHref}>
+      <LinkBack to={backLinkHref}>
         <IoArrowBackCircle size={35} />
-        Back to products
-      </Link>
+        Back to the movies
+      </LinkBack>
       <MovieDetailsList movDetails={movie} genres={genres} />
       {loading && <Loader />}
-      <div>
-        <ul>
+      <Header>
+        <List>
           <li>
-            <Link to="cast">Cast</Link>
+            <LinkDetalis to="cast">Cast</LinkDetalis>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <LinkDetalis to="reviews">Reviews</LinkDetalis>
           </li>
-        </ul>
-      </div>
+        </List>
+      </Header>
       <Outlet />
     </main>
   );

@@ -1,26 +1,38 @@
+import {
+  Container,
+  Info,
+  Img,
+  ContainerImg,
+  Title,
+  Overview,
+  Genres,
+  OverviewText,
+  GenresText,
+} from './MovieDetailsList.styled';
+
 export const MovieDetailsList = ({ movDetails, genres }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w300';
   const { poster_path, title, overview } = movDetails;
 
   console.log(genres);
   return (
-    <>
-      <div>
-        <img src={imgUrl + poster_path} alt={title} />
-      </div>
-      <div>
-        <h1>{title}</h1>
-        <h2>Overview</h2>
-        <p>{overview}</p>
+    <Container>
+      <ContainerImg>
+        <Img src={imgUrl + poster_path} alt={title} />
+      </ContainerImg>
+      <Info>
+        <Title>{title}</Title>
+        <Overview>Overview</Overview>
+        <OverviewText>{overview}</OverviewText>
         <ul>
-          <h2>Genres</h2>
+          <Genres>Genres</Genres>
           {genres.map(item => (
             <li key={item.id}>
-              <p>{item.name}</p>
+              <GenresText>{item.name}</GenresText>
             </li>
           ))}
         </ul>
-      </div>
-    </>
+      </Info>
+    </Container>
   );
 };
