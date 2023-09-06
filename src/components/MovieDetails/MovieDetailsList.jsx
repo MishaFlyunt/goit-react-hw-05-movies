@@ -8,11 +8,12 @@ import {
   Genres,
   OverviewText,
   GenresText,
+  Rating,
 } from './MovieDetailsList.styled';
 
 export const MovieDetailsList = ({ movDetails, genres }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w300';
-  const { poster_path, title, overview } = movDetails;
+  const { poster_path, title, overview, vote_average } = movDetails;
 
   console.log(genres);
   return (
@@ -22,6 +23,7 @@ export const MovieDetailsList = ({ movDetails, genres }) => {
       </ContainerImg>
       <Info>
         <Title>{title}</Title>
+        <Rating>Rating - {vote_average}</Rating>
         <Overview>Overview</Overview>
         <OverviewText>{overview}</OverviewText>
         <ul>

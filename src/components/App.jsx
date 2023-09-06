@@ -1,4 +1,5 @@
 import React from 'react';
+// import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Container/ContainerHeader';
 import { Home } from 'pages/Home/Home';
@@ -6,6 +7,8 @@ import { Movies } from 'pages/Movies/Movies';
 import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
 import { Cast } from './Cast/Cast';
 import { Reviews } from './Reviews/Reviews';
+
+// const Layout = lazy(() => import('./Container/ContainerHeader'));
 
 export const App = () => {
   return (

@@ -22,7 +22,7 @@ export const Link = styled(NavLink)`
 
   &.active {
     color: orange;
-    background-color: rgb(218, 238, 42);
+    background-color: rgb(220, 219, 212);
     border: 2px solid black;
     border-radius: 10px;
   }

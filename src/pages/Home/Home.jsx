@@ -15,8 +15,8 @@ export const Home = () => {
         setLoading(true);
         const movieDay = await fetchMovieDay(page);
         if (movieDay.length) {
-          setMovie(prevState => prevState.concat([...movieDay]));
-          // setMovie(movieDay);
+          // setMovie(prevState => prevState.concat([...movieDay]));
+          setMovie(movieDay);
           setLoading(false);
           console.log(movieDay.page);
         }

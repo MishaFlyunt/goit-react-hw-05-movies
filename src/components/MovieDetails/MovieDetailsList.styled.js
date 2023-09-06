@@ -46,3 +46,9 @@ export const GenresText = styled.p`
   color: rgb(137, 135, 121);
   font-size: 20px;
 `;
+
+export const Rating = styled.p`
+  margin-bottom: 10px;
+  color: rgb(210, 106, 90);
+  font-size: 20px;
+`;
