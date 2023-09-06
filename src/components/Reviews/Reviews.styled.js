@@ -11,6 +11,7 @@ export const Item = styled.li`
 `;
 
 export const Title = styled.h3`
+  color: rgb(17, 109, 109);
   margin-bottom: 10px;
 `;
 
