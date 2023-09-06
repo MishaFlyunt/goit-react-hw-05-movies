@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieIdCast } from '../API';
-import { List, Name } from './Cast.styled';
+import { List, Name, Img } from './Cast.styled';
+import photoStub from '../../img/photoStub.png';
 
 export const Cast = () => {
   const imgUrl = 'https://image.tmdb.org/t/p/w200';
@@ -29,11 +30,14 @@ export const Cast = () => {
       <List>
         {cast.map(item => (
           <li key={item.id}>
-            <img
-              src={imgUrl + item.profile_path}
+            <Img
+              // src={imgUrl + item.profile_path}
+              src={
+                item.profile_path !== null
+                  ? imgUrl + item.profile_path
+                  : photoStub
+              }
               alt={item.name}
-              width={150}
-              height={200}
             />
             <Name>{item.name}</Name>
           </li>

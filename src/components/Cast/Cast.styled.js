@@ -18,4 +18,10 @@ export const Name = styled.h4`
   margin-top: 15px;
   text-align: center;
   color: rgb(137, 135, 121);
+  width: 140px;
+`;
+
+export const Img = styled.img`
+  width: 150px;
+  height: 200px;
 `;
