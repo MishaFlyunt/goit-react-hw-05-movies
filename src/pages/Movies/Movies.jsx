@@ -1,25 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Loader } from '../../components/Loader/Loader';
 import { MoviesSearch } from '../../components/MoviesSearch/ MoviesSearch';
 import { MoviesSearchList } from '../../components/MoviesSearchList/MoviesSearchList';
 import { fetchMovieSearch } from '../../components/API';
-import { useParams, Outlet } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 
 export const Movies = () => {
   const [movie, setMovie] = useState([]);
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const { movieId } = useParams();
+  // const { movieId } = useParams();
   // const location = useLocation();
-
-  const changeQuery = newQuery => {
-    setQuery(newQuery);
-    setMovie([]);
-    setPage(1);
-  };
 
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -28,23 +23,21 @@ export const Movies = () => {
       return;
     }
 
-    changeQuery(evt.target.elements.query.value);
-    // setQuery(evt.target.elements.query.value);
+    const queryCurrent = evt.target.elements.query.value.trim();
+    setSearchParams({ query: queryCurrent });
     evt.target.reset();
   };
 
   useEffect(() => {
     if (query === '') return;
-    if (setQuery !== query || setPage !== page) {
-      console.log(`HTTP запит за ${query}, і page=${page}`);
-    }
+  
     const loadResult = async () => {
       try {
         setLoading(true);
-        const movieSearch = await fetchMovieSearch(query, page, movieId);
+        const movieSearch = await fetchMovieSearch(query, page);
         if (movieSearch.length) {
-          setMovie(prevState => prevState.concat([...movieSearch]));
-          // setMovie(movieSearch);
+          // setMovie(prevState => prevState.concat([...movieSearch]));
+          setMovie(movieSearch);
           setLoading(false);
         } else {
           toast.error('Sorry, Nothing was found for these criteria');
@@ -57,7 +50,7 @@ export const Movies = () => {
       }
     };
     loadResult();
-  }, [query, page, movieId]);
+  }, [query, page]);
 
   const handleLoadMore = () => {
     setPage(page + 1);
@@ -71,7 +64,9 @@ export const Movies = () => {
       {movie.length > 0 && !loading && <Button loadMore={handleLoadMore} />}
       {loading && <Loader />}
       <Toaster position="top-right" reverseOrder={false} />
-      <Outlet />
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </section>
   );
 };

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState, Suspense } from 'react';
+import { useParams, Outlet } from 'react-router-dom';
 import { fetchMovieIdCast } from '../API';
 import { List, Name, Img } from './Cast.styled';
 import photoStub from '../../img/photoStub.png';
@@ -43,6 +43,9 @@ export const Cast = () => {
           </li>
         ))}
       </List>
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </section>
   );
 };

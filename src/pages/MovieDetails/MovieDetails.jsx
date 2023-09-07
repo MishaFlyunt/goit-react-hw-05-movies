@@ -1,5 +1,5 @@
 import { useLocation, useParams, Outlet } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { IoArrowBackCircle } from 'react-icons/io5';
 import { Loader } from '../../components/Loader/Loader';
 import { MovieDetailsList } from '../../components/MovieDetails/MovieDetailsList';
@@ -53,7 +53,11 @@ export const MovieDetails = () => {
           </li>
         </List>
       </Header>
-      <Outlet />
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };
+
+
