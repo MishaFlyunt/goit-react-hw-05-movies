@@ -8,8 +8,9 @@ import { Header, List, LinkDetalis, LinkBack } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
-  const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  // const location = useLocation();
+  // const backLinkHref = location.state?.from ?? '/';
+  const { state } = useLocation();
 
   const [movie, setMovie] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -37,7 +38,7 @@ export const MovieDetails = () => {
   console.log(movie);
   return (
     <main>
-      <LinkBack to={backLinkHref}>
+      <LinkBack to={state.from}>
         <IoArrowBackCircle size={35} />
         Back to the movies
       </LinkBack>
@@ -46,10 +47,14 @@ export const MovieDetails = () => {
       <Header>
         <List>
           <li>
-            <LinkDetalis to="cast">Cast</LinkDetalis>
+            <LinkDetalis to="cast" state={{ from: state.from }}>
+              Cast
+            </LinkDetalis>
           </li>
           <li>
-            <LinkDetalis to="reviews">Reviews</LinkDetalis>
+            <LinkDetalis to="reviews" state={{ from: state.from }}>
+              Reviews
+            </LinkDetalis>
           </li>
         </List>
       </Header>
@@ -59,5 +64,3 @@ export const MovieDetails = () => {
     </main>
   );
 };
-
-

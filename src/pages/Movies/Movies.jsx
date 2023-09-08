@@ -13,8 +13,6 @@ export const Movies = () => {
   const query = searchParams.get('query') ?? '';
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  // const { movieId } = useParams();
-  // const location = useLocation();
 
   const handleSubmit = evt => {
     evt.preventDefault();
