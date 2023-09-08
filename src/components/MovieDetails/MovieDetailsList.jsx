@@ -11,7 +11,7 @@ import {
   Rating,
 } from './MovieDetailsList.styled';
 
-export const MovieDetailsList = ({ movDetails, genres }) => {
+ const MovieDetailsList = ({ movDetails, genres }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w300';
   const { poster_path, title, overview, vote_average } = movDetails;
 
@@ -38,3 +38,5 @@ export const MovieDetailsList = ({ movDetails, genres }) => {
     </Container>
   );
 };
+
+export default MovieDetailsList;

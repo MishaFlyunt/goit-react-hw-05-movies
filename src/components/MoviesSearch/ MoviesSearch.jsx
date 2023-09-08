@@ -6,7 +6,7 @@ import {
   ButtonStyled,
 } from './ MoviesSearch.styled';
 
-export const MoviesSearch = ({ submit }) => {
+const MoviesSearch = ({ submit }) => {
   return (
     <SearchbarForm>
       <SearchForm onSubmit={submit}>
@@ -23,3 +23,5 @@ export const MoviesSearch = ({ submit }) => {
     </SearchbarForm>
   );
 };
+
+export default MoviesSearch;

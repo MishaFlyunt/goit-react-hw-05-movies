@@ -1,13 +1,13 @@
 import { useState, useEffect, Suspense } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Loader } from '../../components/Loader/Loader';
-import { MoviesSearch } from '../../components/MoviesSearch/ MoviesSearch';
-import { MoviesSearchList } from '../../components/MoviesSearchList/MoviesSearchList';
+import  MoviesSearch  from '../../components/MoviesSearch/ MoviesSearch';
+import  MoviesSearchList  from '../../components/MoviesSearchList/MoviesSearchList';
 import { fetchMovieSearch } from '../../components/API';
 import { Outlet, useSearchParams } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 
-export const Movies = () => {
+const Movies = () => {
   const [movie, setMovie] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
@@ -28,7 +28,7 @@ export const Movies = () => {
 
   useEffect(() => {
     if (query === '') return;
-  
+
     const loadResult = async () => {
       try {
         setLoading(true);
@@ -68,3 +68,5 @@ export const Movies = () => {
     </section>
   );
 };
+
+export default Movies;

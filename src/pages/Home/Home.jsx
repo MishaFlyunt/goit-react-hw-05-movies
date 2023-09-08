@@ -1,4 +1,4 @@
-import { ListPopularMovies } from '../../components/ListPopularMovies/ListPopularMovies';
+import  ListPopularMovies  from '../../components/ListPopularMovies/ListPopularMovies';
 import { useEffect, useState, Suspense } from 'react';
 import {  Outlet } from 'react-router-dom';
 import { fetchMovieDay } from '../../components/API';

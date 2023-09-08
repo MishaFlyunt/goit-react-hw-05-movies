@@ -4,7 +4,7 @@ import { fetchMovieIdCast } from '../API';
 import { List, Name, Img } from './Cast.styled';
 import photoStub from '../../img/photoStub.png';
 
-export const Cast = () => {
+const Cast = () => {
   const imgUrl = 'https://image.tmdb.org/t/p/w200';
 
   const { movieId } = useParams();
@@ -49,3 +49,4 @@ export const Cast = () => {
     </section>
   );
 };
+export default Cast;

@@ -2,7 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { List, TitleCard, Img } from './MoviesSearchList.styled';
 import photoStub from '../../img/photoStubMovie.jpg';
 
-export const MoviesSearchList = ({ movie }) => {
+ const MoviesSearchList = ({ movie }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w300';
   const location = useLocation();
   return (
@@ -28,3 +28,5 @@ export const MoviesSearchList = ({ movie }) => {
     </div>
   );
 };
+
+export default MoviesSearchList;

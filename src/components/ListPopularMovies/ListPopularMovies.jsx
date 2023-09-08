@@ -2,7 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Title, List, TitleCard, Img } from './ListPopularMovies.style';
 import photoStub from '../../img/photoStubMovie.jpg';
 
-export const ListPopularMovies = ({ movie }) => {
+const ListPopularMovies = ({ movie }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w300';
   const location = useLocation();
   return (
@@ -29,3 +29,5 @@ export const ListPopularMovies = ({ movie }) => {
     </div>
   );
 };
+
+export default ListPopularMovies;

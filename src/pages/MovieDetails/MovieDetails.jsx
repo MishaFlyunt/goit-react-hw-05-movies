@@ -2,16 +2,13 @@ import { useLocation, useParams, Outlet } from 'react-router-dom';
 import { useEffect, useState, Suspense } from 'react';
 import { IoArrowBackCircle } from 'react-icons/io5';
 import { Loader } from '../../components/Loader/Loader';
-import { MovieDetailsList } from '../../components/MovieDetails/MovieDetailsList';
+import MovieDetailsList from '../../components/MovieDetails/MovieDetailsList';
 import { fetchMovieId } from '../../components/API';
 import { Header, List, LinkDetalis, LinkBack } from './MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
-  // const location = useLocation();
-  // const backLinkHref = location.state?.from ?? '/';
   const { state } = useLocation();
-
   const [movie, setMovie] = useState([]);
   const [genres, setGenres] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -64,3 +61,5 @@ export const MovieDetails = () => {
     </main>
   );
 };
+
+export default MovieDetails;
