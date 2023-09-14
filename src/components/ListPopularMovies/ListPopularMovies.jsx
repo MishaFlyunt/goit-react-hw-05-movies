@@ -5,6 +5,8 @@ import photoStub from '../../img/photoStubMovie.jpg';
 const ListPopularMovies = ({ movie }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w300';
   const location = useLocation();
+
+  console.log({ from: location });
   return (
     <div>
       <Title>Trending today</Title>

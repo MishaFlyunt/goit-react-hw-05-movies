@@ -31,8 +31,10 @@ const MovieDetails = () => {
     resultMovie();
   }, [movieId]);
 
-  console.log(movieId);
   console.log(movie);
+  console.log(state.from);
+  console.log({ from: state.from });
+
   return (
     <main>
       <LinkBack to={state.from}>
