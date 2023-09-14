@@ -13,7 +13,7 @@ const ListPopularMovies = ({ movie }) => {
       <List>
         {movie.map(item => (
           <li key={item.id}>
-            <NavLink to={`${item.id}`} state={{ from: location }}>
+            <NavLink to={`/movies/${item.id}`} state={{ from: location }}>
               <Img
                 src={
                   item.poster_path !== null

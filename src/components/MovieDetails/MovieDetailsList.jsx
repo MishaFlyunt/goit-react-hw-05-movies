@@ -11,9 +11,15 @@ import {
   Rating,
 } from './MovieDetailsList.styled';
 
- const MovieDetailsList = ({ movDetails, genres }) => {
+const MovieDetailsList = ({ movDetails, genres }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w300';
-  const { poster_path, title, overview, vote_average } = movDetails;
+  const { poster_path, title, overview, vote_average, release_date } =
+    movDetails;
+
+  // const release = release_date.split('-')[0];
+  // console.log(release_date.slice(0, 4));
+  // console.log(release_date);
+  // const voteAverage = vote_average.toFixed(1);
 
   console.log(genres);
   return (
