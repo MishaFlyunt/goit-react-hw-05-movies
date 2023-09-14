@@ -16,11 +16,10 @@ const MovieDetailsList = ({ movDetails, genres }) => {
   const { poster_path, title, overview, vote_average, release_date } =
     movDetails;
 
-  // const release = release_date.split('-')[0];
-  // console.log(release_date.slice(0, 4));
-  // console.log(release_date);
-  // const voteAverage = vote_average.toFixed(1);
-
+  // const release = release_date.substring(0, 4);
+  console.log(typeof release_date);
+  const voteAverage = Number(vote_average).toFixed(1);
+  // substring(0, 4);
   console.log(genres);
   return (
     <Container>
@@ -28,8 +27,11 @@ const MovieDetailsList = ({ movDetails, genres }) => {
         <Img src={imgUrl + poster_path} alt={title} />
       </ContainerImg>
       <Info>
-        <Title>{title}</Title>
-        <Rating>Rating - {vote_average}</Rating>
+        <Title>
+          {title}
+          {/* {release} */}
+        </Title>
+        <Rating>Rating - {voteAverage}</Rating>
         <Overview>Overview</Overview>
         <OverviewText>{overview}</OverviewText>
         <ul>

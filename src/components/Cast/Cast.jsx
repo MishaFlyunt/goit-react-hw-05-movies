@@ -28,20 +28,24 @@ const Cast = () => {
   return (
     <section>
       <List>
-        {cast.map(item => (
-          <li key={item.id}>
-            <Img
-              // src={imgUrl + item.profile_path}
-              src={
-                item.profile_path !== null
-                  ? imgUrl + item.profile_path
-                  : photoStub
-              }
-              alt={item.name}
-            />
-            <Name>{item.name}</Name>
-          </li>
-        ))}
+        {cast.length ? (
+          cast.map(item => (
+            <li key={item.id}>
+              <Img
+                // src={imgUrl + item.profile_path}
+                src={
+                  item.profile_path !== null
+                    ? imgUrl + item.profile_path
+                    : photoStub
+                }
+                alt={item.name}
+              />
+              <Name>{item.name}</Name>
+            </li>
+          ))
+        ) : (
+          <p>We don't have any cast information for this movie.</p>
+        )}
       </List>
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />

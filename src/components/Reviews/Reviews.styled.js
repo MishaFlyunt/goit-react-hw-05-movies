@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const List = styled.ul`
   padding: 0 30px;
-  
 `;
 
 export const Item = styled.li`
@@ -18,4 +17,8 @@ export const Title = styled.h3`
 export const Text = styled.p`
   padding-bottom: 10px;
   font-size: 14px;
+`;
+
+export const Info = styled.p`
+  text-align: center;
 `;
