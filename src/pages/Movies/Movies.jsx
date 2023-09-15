@@ -40,9 +40,9 @@ const Movies = () => {
         const movieSearch = await fetchMovieSearch(query, page);
         if (movieSearch.length !== 0) {
           // setMovie(prevState => prevState.concat([...movieSearch]));
-          // setMovie(movieSearch);
           setMovie([...movieSearch.results]);
           setTotalPage(movieSearch.total_pages);
+          console.log(movieSearch);
           setLoading(false);
         } else {
           toast.error('Sorry, Nothing was found for these criteria');
