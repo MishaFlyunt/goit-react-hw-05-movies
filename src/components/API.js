@@ -16,7 +16,7 @@ export const fetchMovieDay = async page => {
         page: page,
       },
     });
-    return response.data.results;
+    return response.data;
   } catch (error) {
     throw error;
   }
@@ -95,7 +95,7 @@ export const fetchMovieSearch = async (guery, page) => {
         page: page,
       },
     });
-    return response.data.results;
+    return response.data;
   } catch (error) {
     throw error;
   }

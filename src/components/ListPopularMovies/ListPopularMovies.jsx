@@ -1,5 +1,11 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { Title, List, TitleCard, Img } from './ListPopularMovies.style';
+import {
+  Title,
+  List,
+  TitleCard,
+  Img,
+  Section,
+} from './ListPopularMovies.style';
 import photoStub from '../../img/photoStubMovie.jpg';
 
 const ListPopularMovies = ({ movie }) => {
@@ -8,7 +14,7 @@ const ListPopularMovies = ({ movie }) => {
 
   console.log({ from: location });
   return (
-    <div>
+    <Section>
       <Title>Trending today</Title>
       <List>
         {movie.map(item => (
@@ -28,7 +34,7 @@ const ListPopularMovies = ({ movie }) => {
           </li>
         ))}
       </List>
-    </div>
+    </Section>
   );
 };
 

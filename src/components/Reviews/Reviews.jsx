@@ -13,7 +13,6 @@ const Reviews = () => {
         const movieReviews = await fetchMovieIdRevies(movieId);
         if (movieReviews.length !== 0) {
           setReviews([...movieReviews.results]);
-          // setReviews(movieReviews);
         }
       } catch (error) {
         console.log(error);

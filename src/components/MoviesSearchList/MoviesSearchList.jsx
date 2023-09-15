@@ -1,12 +1,12 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { List, TitleCard, Img } from './MoviesSearchList.styled';
+import { List, TitleCard, Img, Section } from './MoviesSearchList.styled';
 import photoStub from '../../img/photoStubMovie.jpg';
 
  const MoviesSearchList = ({ movie }) => {
   const imgUrl = 'https://image.tmdb.org/t/p/w300';
   const location = useLocation();
   return (
-    <div>
+    <Section>
       <List>
         {movie.map(item => (
           <li key={item.id}>
@@ -25,7 +25,7 @@ import photoStub from '../../img/photoStubMovie.jpg';
           </li>
         ))}
       </List>
-    </div>
+    </Section>
   );
 };
 

@@ -25,3 +25,7 @@ export const Img = styled.img`
   width: 300px;
   height: 450px;
 `;
+
+export const Section = styled.section`
+  padding-bottom: 50px;
+`;
